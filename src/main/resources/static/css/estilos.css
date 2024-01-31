@@ -12,3 +12,35 @@
 p{
     background-color: background; 
 }
+
+a: link{
+    color: bisque;
+}
+
+a:visited{
+    color: appworkspace;
+    
+}
+a:hover{
+    background-color:  black;
+    color:#ffffff;
+    border-radius: 25px;
+        
+}
+a:active{
+    background-color: red;
+    color: red;
+}
+p:nth-child(even){
+    background-color: red;
+    
+}
+p:nyh-child(odd) {
+    background-color:  darksalmon;
+}
+.contenedor{
+    top: 20%;
+    left: 0;
+    background-color:  appworkspace;
+    
+}
