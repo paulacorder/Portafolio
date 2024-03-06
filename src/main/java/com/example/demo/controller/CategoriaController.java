@@ -1,4 +1,3 @@
-
 package com.example.demo.controller;
 
 import com.example.demo.demain.Categoria;
@@ -15,30 +14,30 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-@Service
 @Controller
 @RequestMapping("/categoria")
 public class CategoriaController {
-    
+
     @Autowired
     CategoriaService categoriaService;
-    
+
     @GetMapping("/listado")
     public String listado(Model model) {
         List<Categoria> lista = categoriaService.getCategorias(false);
-        model.addAttribute("categorias", lista);// in identifcor y el valor de el
+        model.addAttribute("categorias", lista);
         model.addAttribute("totalCategorias", lista.size());
-        
+
         return "/categoria/listado";
     }
-     @GetMapping("/listado")
+
+    @GetMapping("/inicio")
     public String inicio(Model model) {
         var categorias = categoriaService.getCategorias(false);
         model.addAttribute("categorias", categorias);
         model.addAttribute("totalCategorias", categorias.size());
-        return "/categoria/listado";
+        return "/categoria/inicio";
     }
-    
+
     @GetMapping("/nuevo")
     public String categoriaNuevo(Categoria categoria) {
         return "/categoria/modifica";
@@ -46,16 +45,16 @@ public class CategoriaController {
 
     @Autowired
     private FirebaseStorageServiceImpl firebaseStorageService;
-    
+
     @PostMapping("/guardar")
     public String categoriaGuardar(Categoria categoria,
-            @RequestParam("imagenFile") MultipartFile imagenFile) {        
+            @RequestParam("imagenFile") MultipartFile imagenFile) {
         if (!imagenFile.isEmpty()) {
             categoriaService.save(categoria);
             categoria.setRutaImagen(
                     firebaseStorageService.cargaImagen(
-                            imagenFile, 
-                            "categoria", 
+                            imagenFile,
+                            "categoria",
                             categoria.getIdCategoria()));
         }
         categoriaService.save(categoria);
@@ -74,5 +73,5 @@ public class CategoriaController {
         model.addAttribute("categoria", categoria);
         return "/categoria/modifica";
     }
-    
+
 }
