@@ -3,6 +3,7 @@ package com.example.demo.demain;
 
 import jakarta.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 import lombok.Data;
 
 @Data 
@@ -20,6 +21,11 @@ public class Categoria implements Serializable{  // permite que cuando guarde da
     private String descripcion;
     private String rutaImagen;
     private boolean activo;
+    
+    
+    @ManyToOne
+    @JoinColumn(name="id_categoria", insertable = false, updatable= false)
+    List<Producto> productos;
 
     public Categoria() {
     }
