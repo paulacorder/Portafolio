@@ -74,7 +74,7 @@ public class ProjectConfig implements WebMvcConfigurer{
         build.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
     }
     //se ocupa para el examen
-/*@Bean
+@Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((request) -> request
@@ -106,8 +106,8 @@ public class ProjectConfig implements WebMvcConfigurer{
     }
 
 /* El siguiente método se utiliza para completar la clase no es 
-    realmente funcional, la próxima semana se reemplaza con usuarios de BD */    
-    /*@Bean
+    //realmente funcional, la próxima semana se reemplaza con usuarios de BD */    
+    @Bean
     public UserDetailsService users() {
         UserDetails admin = User.builder()
                 .username("juan")
