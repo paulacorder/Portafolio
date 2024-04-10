@@ -5,7 +5,6 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.service.ReporteService;
-import jakarta.mail.Quota.Resource;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -29,11 +28,13 @@ import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author paula
  */
+@Service
 public class ReporteServiceImpl implements ReporteService {
 
     @Autowired
